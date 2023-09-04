@@ -191,10 +191,14 @@ public class ExcelMapper {
 		});
 	}
 
-	private void mapNameToIndex(Field field, String name, Row row, Map<Field, Integer> cells) {
+	private void mapNameToIndex(Field field, String name, Row row, Map<Field, Integer> cells) throws Exception {
 		int idx = findIndexCellByName(name, row);
 		if (idx != -1) {
 			cells.put(field, idx);
+		}
+		else
+		{
+			throw new Exception("No column with name:"+name+" found, check excel sheet");
 		}
 	}
 

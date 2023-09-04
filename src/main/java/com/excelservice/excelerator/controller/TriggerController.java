@@ -24,9 +24,17 @@ public class TriggerController {
                     .toObjectOf(SampleModel.class)
                     .fromSheet(0) // if this method not used , called all sheets
                     .map();
-        } catch (Throwable e) {
+        }
+        catch (Exception e)
+        {
+            SampleModel sampleExceptionModel=new SampleModel();
+            sampleExceptionModel.setName(e.getMessage());
+            hrlItems.add(sampleExceptionModel);
+        }
+        catch (Throwable e) {
             throw new RuntimeException(e);
         }
+
         return hrlItems;
     }
 
